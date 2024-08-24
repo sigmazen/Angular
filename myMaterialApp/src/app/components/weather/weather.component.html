@@ -9,16 +9,17 @@
           *ngFor="let city of cities; let i = index"
           (click)="onSelectCity(i)"
         >
-          {{ city.name }}
+          <a
+            routerLink="/weather/details/{{ i }}"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >{{ city.name }}</a
+          >
         </li>
       </ul>
     </div>
     <div class="page-body__details">
-      <app-weather-details
-        *ngIf="selectedCity >= 0"
-        [forecast]="cities[selectedCity].forecast"
-      ></app-weather-details>
-      <!-- <app-weather-details *ngIf="selectedCityName !== ''"></app-weather-details> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
